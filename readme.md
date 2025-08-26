@@ -7,6 +7,7 @@ Minimial javascript dependencies. no JS frameworks. no state management tools.
 ## Live instances
 
 - https://metadata.nostr.com/
+- https://metadata.dergigi.com/
 
 ## Features
 
