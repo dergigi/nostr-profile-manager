@@ -1,6 +1,14 @@
 {
   "name": "nostr-profile-manager",
   "private": true,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:js": "esbuild src/index.ts --bundle --minify --sourcemap=external --outfile=dist/index.js",
+    "build:css": "sass src/style.scss dist/style.css --style=compressed",
+    "build:assets": "cp src/index.html dist/index.html && cp -r src/img dist/img",
+    "build": "npm run clean && npm run build:js && npm run build:css && npm run build:assets",
+    "vercel-build": "npm run build"
+  },
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
