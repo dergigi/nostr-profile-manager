@@ -94,7 +94,8 @@ const SubmitMetadataForm = async () => {
     ...existingKeys,
     ...standardkeys.filter((k) => existingKeys.indexOf(k) === -1),
   ];
-  // include any dynamically added fields present in the form (those with name starting with PM-form-)
+  // include any dynamically added fields present in the form
+  // (those with name starting with PM-form-)
   Array.from(fd.keys()).forEach((formKey) => {
     const k = typeof formKey === 'string' && formKey.startsWith('PM-form-')
       ? formKey.substring('PM-form-'.length)
@@ -159,7 +160,7 @@ const loadMetadataForm = (RootElementID: string) => {
       const nameInput = document.getElementById('PM-new-field-name') as HTMLInputElement;
       const key = nameInput.value.trim();
       // allow only simple safe keys and avoid duplicates/standard keys
-      const isValidKey = /^[a-zA-Z0-9_\-]+$/.test(key);
+      const isValidKey = /^[a-zA-Z0-9_-]+$/.test(key);
       if (!key || !isValidKey) { event.preventDefault(); return; }
       if (standardkeys.indexOf(key) !== -1) { event.preventDefault(); return; }
       if (document.getElementById(`PM-form-${key}`)) { event.preventDefault(); return; }
